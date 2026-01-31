@@ -30,8 +30,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agentsystems/agentsystems-verify"
+    "url": "git+https://github.com/agentsystems/agentsystems-verify.git"
   },
+  "bugs": {
+    "url": "https://github.com/agentsystems/agentsystems-verify/issues"
+  },
+  "homepage": "https://github.com/agentsystems/agentsystems-verify#readme",
   "dependencies": {
     "canonicalize": "^2.0.0",
     "jszip": "^3.10.1"
