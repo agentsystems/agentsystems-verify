@@ -13,19 +13,41 @@ npm install -g agentsystems-verify
 Or run directly with npx:
 
 ```bash
-npx agentsystems-verify ticket.json logs.zip
+npx agentsystems-verify --ticket ticket.json --logs logs.zip
 ```
 
 ## Usage
 
+Three ways to run:
+
 ```bash
-agentsystems-verify <ticket.json> <logs.zip>
+# 1. Using a ticket file
+agentsystems-verify --ticket ticket.json --logs logs.zip
+
+# 2. Using CLI flags
+agentsystems-verify \
+  --owner 37LN1vDKaqZi1fAwu9w-fxRsjgvzr0b3xmVRHa-xuP8 \
+  --namespace my_app \
+  --start 2026-01-01 \
+  --end 2026-01-31 \
+  --logs logs.zip
+
+# 3. Interactive mode (prompts for missing values)
+agentsystems-verify --logs logs.zip
 ```
 
-### Arguments
+### Options
 
-- `ticket.json` - Arweave verification ticket
-- `logs.zip` - ZIP file containing log files to verify
+| Option | Short | Description |
+|--------|-------|-------------|
+| `--ticket` | `-t` | Arweave verification ticket (JSON file) |
+| `--logs` | `-l` | ZIP file containing log files to verify |
+| `--owner` | `-o` | Arweave wallet address |
+| `--namespace` | `-n` | Namespace identifier |
+| `--start` | `-s` | Start date (YYYY-MM-DD) |
+| `--end` | `-e` | End date (YYYY-MM-DD) |
+| `--help` | `-h` | Show help message |
+| `--version` | `-v` | Show version number |
 
 ### Ticket Format
 
@@ -34,8 +56,8 @@ agentsystems-verify <ticket.json> <logs.zip>
   "type": "arweave",
   "owner": "<arweave-wallet-address>",
   "namespace": "<namespace>",
-  "date_start": "2024-01-01",
-  "date_end": "2024-01-31"
+  "date_start": "2026-01-01",
+  "date_end": "2026-01-31"
 }
 ```
 
@@ -74,7 +96,7 @@ console.log(`Missing: ${results.missing.length}`);
 
 ## Why This Exists
 
-The agentsystems-notary SDK writes tamper-evident logs to Arweave. This CLI provides **fully open source, decentralized verification** - no need to trust AgentSystems' verify-ui or verify-api.
+The agentsystems-notary SDK writes tamper-evident logs to Arweave. This CLI provides open source, independent verification - no need to trust AgentSystems' verify-ui or verify-api.
 
 ```
 SDK (write)  →  Arweave blockchain  →  This CLI (verify)
