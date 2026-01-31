@@ -1,6 +1,6 @@
 {
   "name": "agentsystems-verify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open source CLI for verifying agentsystems-notary logs against Arweave blockchain",
   "type": "module",
   "main": "dist/index.js",
