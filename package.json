@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "dev": "tsc --watch"
   },
   "keywords": [
     "arweave",
