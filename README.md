@@ -1,6 +1,6 @@
 # agentsystems-verify
 
-Open source CLI for verifying [agentsystems-notary](https://pypi.org/project/agentsystems-notary/) logs against Arweave blockchain.
+CLI for verifying [agentsystems-notary](https://pypi.org/project/agentsystems-notary/) logs against Arweave blockchain.
 
 Open source, independent verification. No API keys. No AgentSystems infrastructure required.
 
