@@ -1,3 +1,4 @@
+import { createHash } from "crypto";
 import JSZip from "jszip";
 import type { ArweaveTicket, ArweaveTxDetails, VerificationResults } from "./types.js";
 import { generateDateRange, queryArweaveTransactions, getCurrentBlockHeight } from "./arweave.js";
@@ -120,10 +121,13 @@ export async function verify(
 
   onProgress?.(`Hashed ${localHashes.length} files. Querying Arweave...`);
 
+  // Hash namespace to 64-char lowercase hex SHA-256 (matches SDK behavior)
+  const hashedNamespace = createHash("sha256").update(ticket.namespace).digest("hex");
+
   const dates = generateDateRange(ticket.date_start, ticket.date_end);
   const arweaveTxs = await queryArweaveTransactions(
     ticket.owner,
-    ticket.namespace,
+    hashedNamespace,
     dates,
     (page, count) => {
       onProgress?.(`Fetching page ${page} from Arweave (${count} transactions)...`);
